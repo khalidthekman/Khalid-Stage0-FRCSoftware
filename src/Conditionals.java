@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+
 class Drivetrain {
     /**
      * Dummy function that spins drivetrain motors at the specified speed.
@@ -24,7 +25,10 @@ void main() {
     // shooter motors. Then print the value of `shooterVelocity`. After running,
     // change `shooterEnabled` to `true` and re-run; the code should now print 1.
     boolean shooterEnabled = false;
+    int shooterVelocity;
+    if (shooterVelocity = 1) {
 
+    }
 
     // Print "Success!" if `statusCode` is equal to 0. Otherwise, if `statusCode`
     // is NOT EQUAL to 1, print "User exited code." Else, print "There was an error."
