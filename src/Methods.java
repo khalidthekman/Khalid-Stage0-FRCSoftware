@@ -9,27 +9,35 @@ class ScoreKeeper {
     // needs to be able to change over time. Declare a `private int` field
     // named `score` below (don't initialize it here, the constructors will
     // handle that).
+    private int score;
 
     // A team's score can never drop below zero. Declare a
     // constant named `MIN_SCORE`, equal to `0`, to represent
     // that floor.
-
+    final int MIN_SCORE = 0;
 
     // Write a no-argument constructor `ScoreKeeper()` that starts the score
     // at `MIN_SCORE`. Instead of repeating the constructor logic, use
     // `this(...)` to call the other constructor below, passing `MIN_SCORE`
     // as the argument.
-
+    public ScoreKeeper() {
+        score = MIN_SCORE;
+    }
 
     // Write a constructor `ScoreKeeper(int startingScore)` that sets `score`
     // to `startingScore`.
-
+    public ScoreKeeper(int startingScore ) {
+        score = startingScore;
+    }
 
     // Write a method `addPoints(int points)` that adds `points` to `score`,
     // then prints "Score is now: " followed by the new score. This method
     // doesn't need to give anything back to its caller, so its return type
     // should be `void`.
-
+    public void addpoints(int points) {
+        score = points;
+        System.out.println("Score is now:" + " " + score);
+    }
 
     // Write a method `applyPenalty(int points)` that subtracts `points` from
     // `score`, but never lets the score drop below `MIN_SCORE`. Use a local
@@ -38,7 +46,15 @@ class ScoreKeeper {
     // otherwise, set `score` to `newScore`. Either way, finish by printing
     // "Penalty applied. Score is now: " followed by the new score. This
     // method's return type should also be `void`.
-
+    public void applyPenalty(int points) {
+        int newScore = score - points;
+        if (newScore < MIN_SCORE) {
+            score = MIN_SCORE;
+        } else {
+            score = newScore;
+        }
+        System.out.println("Score is now: " + newScore);
+    }
 
     // Because `score` is private, write a getter method `getScore()` that
     // returns its current value as an `int`.
