@@ -35,7 +35,7 @@ class ScoreKeeper {
     // doesn't need to give anything back to its caller, so its return type
     // should be `void`.
     public void addpoints(int points) {
-        score = points;
+        score = score + points;
         System.out.println("Score is now:" + " " + score);
     }
 
@@ -49,11 +49,9 @@ class ScoreKeeper {
     public void applyPenalty(int points) {
         int newScore = score - points;
         if (newScore < MIN_SCORE) {
-            score = MIN_SCORE;
-        } else {
-            score = newScore;
-        }
-        System.out.println("Score is now: " + newScore);
+            newScore = MIN_SCORE;
+        } 
+        System.out.println("Penalty applied: Score is now: " + newScore);
     }
 
     // Because `score` is private, write a getter method `getScore()` that
@@ -65,8 +63,8 @@ class ScoreKeeper {
     // Write a method `hasWon(int opponentScore)` that returns `true` if this
     // ScoreKeeper's `score` is greater than `opponentScore`, and `false`
     // otherwise.
-    public boolean hasWon(int opponentScore) {
-        if (opponentScore < this.getScore()) {
+    public boolean hasWon(double opponentScore) {
+        if (opponentScore > this.getScore()) {
             return true;
         } else {
             return false;
@@ -91,23 +89,23 @@ void main() {
     // "Score is now: 56".
     redAlliance.addpoints(10);
     redAlliance.addpoints(46);
-
     // Print `redAlliance`'s current score by calling `getScore()`, e.g.
     // `System.out.println(redAlliance.getScore());`
-
+    System.out.println(redAlliance.getScore());
 
     // Call `redAlliance.applyPenalty(20)`. Since 56 - 20 equals 36, it is still above
     // or equal to `MIN_SCORE`, this should print "Penalty applied. Score is now: 36".
+    redAlliance.applyPenalty(20);
 
 
     // Call `redAlliance.applyPenalty(100)`. Since 36 - 100 is below
     // `MIN_SCORE`, the score should be clamped instead of going negative,
     // printing "Penalty applied. Score is now: 0".
-
+    redAlliance.applyPenalty(100);
 
     // Create a second ScoreKeeper named `blueAlliance`, this time using the
     // `ScoreKeeper(int startingScore)` constructor, passing `30`.
-
+    ScoreKeeper blueAlliance = new ScoreKeeper(30);
 
     // Print the result of `redAlliance.hasWon(blueAlliance.getScore())`.
     // Since `redAlliance`'s score is currently 0, this should print `false`.
@@ -115,10 +113,11 @@ void main() {
     // should now print `true` instead (recall `applyPenalty` isn't involved
     // here, so a starting score is allowed to be negative if passed in
     // directly through the constructor).
-
+    System.out.println(redAlliance.hasWon(blueAlliance.getScore()));
 
     // Call `redAlliance.reset()`, then print `redAlliance.getScore()` again.
     // It should now print `0`, even though `redAlliance` never had any
     // penalties applied after its last penalty above.
-
+    redAlliance.reset();
+    System.out.println(redAlliance.getScore());
 }
