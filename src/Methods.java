@@ -58,27 +58,39 @@ class ScoreKeeper {
 
     // Because `score` is private, write a getter method `getScore()` that
     // returns its current value as an `int`.
-
+    public double getScore(){
+        return score;
+    }
 
     // Write a method `hasWon(int opponentScore)` that returns `true` if this
     // ScoreKeeper's `score` is greater than `opponentScore`, and `false`
     // otherwise.
+    public boolean hasWon(int opponentScore) {
+        if (opponentScore < this.getScore()) {
+            return true;
+        } else {
+            return false;
 
+        }
+    }
 
     // Write a method `reset()` that sets `score` back to `MIN_SCORE`,
     // reusing the constant rather than writing `0` directly.
-
+    public void reset() {
+        score = MIN_SCORE;
+    }
 }
 
 void main() {
     // Create a ScoreKeeper named `redAlliance` using the no-argument
     // constructor. Its score should start at `0`.
-
+    ScoreKeeper redAlliance = new ScoreKeeper(0);
 
     // Call `redAlliance.addPoints(10)`, then `redAlliance.addPoints(46)`.
     // Each call should print the running total, ending with
     // "Score is now: 56".
-
+    redAlliance.addpoints(10);
+    redAlliance.addpoints(46);
 
     // Print `redAlliance`'s current score by calling `getScore()`, e.g.
     // `System.out.println(redAlliance.getScore());`
