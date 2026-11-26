@@ -5,6 +5,7 @@
  */
 
 // Import `ArrayList` and `List` from the `java.util` package.
+import java.sql.SQLClientInfoException;
 import java.util.ArrayList;
 import java.util.List;
 // Define an interface named `IntakeSensor` with a single method:
@@ -61,19 +62,23 @@ void main() {
     IntakeSensor laserCAN = new LaserCAN();
     System.out.println(beamBreak.distanceMillimeters());
     System.out.println(laserCAN.distanceMillimeters());
-
     // Create a Pair of String and Integer (Pair<String, Integer>) with the values "Robot" and 254.
     // Print the first value and the second value separated by a space using getFirst() and getSecond().
-    
-
+    Pair<String, Integer> pair = new Pair<>("Robot", 254);
+    String first = pair.getFirst();
+    Integer second = pair.getSecond();
+    System.out.println(first + " " + second);
     // Create a List of Strings (`List<String>`) named `subsystems` using `new ArrayList<>()`.
     // Add the strings "Drivetrain", "Intake", and "Shooter" to `subsystems`.
-
-
+    List<String> subsystems = new ArrayList<>();
+    subsystems.add(new String("Drivetrain"));
+    subsystems.add(new String("Intake"));
+    subsystems.add(new String("Shooter"));
     // Print the size of the `subsystems` list.
-
+    System.out.println(subsystems.size());
 
     // Using a for-each loop, iterate over `subsystems` and print each subsystem name.
-
-
+    for (String subsystem : subsystems) {
+       System.out.println(subsystem);
+    }
 }
