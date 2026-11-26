@@ -57,11 +57,14 @@ void main() {
     // Create a variable named `beamBreak` with type `IntakeSensor`, and assign it a new instance of BeamBreak.
     // Create a variable named `laserCAN` of type `IntakeSensor`, and assign it a new instance of LaserCAN.
     // Print the result of calling `distanceMillimeters()` on both sensors.
-
+    IntakeSensor beamBreak = new BeamBreak();
+    IntakeSensor laserCAN = new LaserCAN();
+    System.out.println(beamBreak.distanceMillimeters());
+    System.out.println(laserCAN.distanceMillimeters());
 
     // Create a Pair of String and Integer (Pair<String, Integer>) with the values "Robot" and 254.
     // Print the first value and the second value separated by a space using getFirst() and getSecond().
-
+    
 
     // Create a List of Strings (`List<String>`) named `subsystems` using `new ArrayList<>()`.
     // Add the strings "Drivetrain", "Intake", and "Shooter" to `subsystems`.
